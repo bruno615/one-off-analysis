@@ -18,13 +18,16 @@ address_csv_location = '~/dev/one-off-analysis/Python/address_to_coordinates/tes
 
 #with open(address_csv_location, 'rb')
 
-address_data = numpy.recfromcsv(address_csv_location, delimiter = ',')
+#address_data = numpy.recfromcsv(address_csv_location, delimiter = ',')
 
 df = pandas.read_csv(address_csv_location, sep = ',')
 
-df['query_address'] = df[''] + ' ' + df[]
-
 # query
-
 pdb.set_trace()
+
+df['query_address'] = df['address'] + ' ' + str(df['zip'])
+
+df['coordinates'] = query_coordinates['query_address']
+
+
 

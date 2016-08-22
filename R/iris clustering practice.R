@@ -45,3 +45,37 @@ plot(iris$Species, cluster_petal$cluster)
 # Performance
 table(cluster$cluster, iris$Species)
 
+
+
+
+
+
+
+# Create DepVar
+data <- iris
+data$is_setosa <- 0
+data$is_setosa[data$Species == 'setosa'] <- 1
+
+
+
+# Linear Model
+lm_model <- lm(is_setosa ~ Sepal.Length + Sepal.Width + Petal.Length, data = data)
+lm_model <- lm(Sepal.Width ~ Sepal.Length + Petal.Width + Petal.Length, data = data)
+
+
+# Gradient Logistic Model
+glm_model <- glm(Sepal.Length ~ Sepal.Width + Petal.Length, 
+                 family = binomial(link = "logit"),
+                 data = data)
+
+glm_model <- glm(is_setosa ~ Sepal.Width + Petal.Length, 
+                 family = binomial(link = "logit"),
+                 data = data)
+
+
+iris
+
+plot(iris)
+library(ggplot2)
+ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) + geom_point()
+
